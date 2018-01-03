@@ -56,12 +56,8 @@ def sub_server(name, q):
     redis_sub = obj.subscribe()  # 调用订阅方法
     while True:
         msg = redis_sub.parse_response()
-#         print('%s' % (msg[0]))
-#         print('%s' % (msg[1]))
-#         print('%s' % (msg[2].decode('utf8')))
         print('%s-%s' % (name, msg))
         q.put(msg)
-
 
 class Worker(threading.Thread):
 
@@ -77,8 +73,8 @@ class Worker(threading.Thread):
         threading.Thread.run(self)
         while not self.__quit:
             data = self.__q.get()
-            print('%s: %s' % (self.name, data[0]))
-            print('%s: %s' % (self.name, data[1]))
+            print('%s: %s' % (self.name, data[0].decode('utf8')))
+            print('%s: %s' % (self.name, data[1].decode('utf8')))
             print('%s: %s' % (self.name, data[2].decode('utf8')))
 
 
@@ -93,8 +89,7 @@ def worker_server(q, name):
 def main():
     pool = redis.ConnectionPool(host='192.168.204.128', port=6379)
     r = redis.Redis(connection_pool=pool)
-    r.set('liwei', '2')
-    print(r.bitcount('liwei'))
+    r.set('liwei', '20')
     print(r.get('liwei').decode())
 
     try:

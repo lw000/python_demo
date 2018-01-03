@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//test/asyncore_demo.py=utf-8
+encoding//test/asyncoro_demo.py=utf-8
+encoding//test/demo.py=utf-8
+encoding//test/flask_demo.py=utf-8
+encoding//test/main.py=utf-8
+encoding//test/memcached_demo.py=utf-8
+encoding//test/mysql_demo.py=utf-8
+encoding//test/pycos_demo.py=utf-8
+encoding//test/redis_demo.py=utf-8

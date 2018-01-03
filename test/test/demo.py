@@ -110,6 +110,10 @@ def main():
     for i in mygenerator:
         print(i)
     
+    
+    lxx = '%s, %d' % ('11111111', 200)
+    print(lxx.encode())
+    
 #     print(os.environ)
 #     print(os.getenv("ERLANG_HOME"))
 

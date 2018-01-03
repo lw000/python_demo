@@ -16,8 +16,8 @@ class GreeterStub(object):
     """
     self.SendChat = channel.unary_unary(
         '/chat.Greeter/SendChat',
-        request_serializer=chat__pb2.msg_chat_request.SerializeToString,
-        response_deserializer=chat__pb2.msg_chat_reply.FromString,
+        request_serializer=chat__pb2.ChatRequest.SerializeToString,
+        response_deserializer=chat__pb2.ChatReply.FromString,
         )
     self.SayHello = channel.unary_unary(
         '/chat.Greeter/SayHello',
@@ -49,8 +49,8 @@ def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'SendChat': grpc.unary_unary_rpc_method_handler(
           servicer.SendChat,
-          request_deserializer=chat__pb2.msg_chat_request.FromString,
-          response_serializer=chat__pb2.msg_chat_reply.SerializeToString,
+          request_deserializer=chat__pb2.ChatRequest.FromString,
+          response_serializer=chat__pb2.ChatReply.SerializeToString,
       ),
       'SayHello': grpc.unary_unary_rpc_method_handler(
           servicer.SayHello,
@@ -60,4 +60,80 @@ def add_GreeterServicer_to_server(servicer, server):
   }
   generic_handler = grpc.method_handlers_generic_handler(
       'chat.Greeter', rpc_method_handlers)
+  server.add_generic_rpc_handlers((generic_handler,))
+
+
+class CalcStub(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def __init__(self, channel):
+    """Constructor.
+
+    Args:
+      channel: A grpc.Channel.
+    """
+    self.add = channel.unary_unary(
+        '/chat.Calc/add',
+        request_serializer=chat__pb2.Value.SerializeToString,
+        response_deserializer=chat__pb2.Result.FromString,
+        )
+    self.sub = channel.unary_unary(
+        '/chat.Calc/sub',
+        request_serializer=chat__pb2.Value.SerializeToString,
+        response_deserializer=chat__pb2.Result.FromString,
+        )
+    self.mul = channel.unary_unary(
+        '/chat.Calc/mul',
+        request_serializer=chat__pb2.Value.SerializeToString,
+        response_deserializer=chat__pb2.Result.FromString,
+        )
+
+
+class CalcServicer(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def add(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def sub(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def mul(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+
+def add_CalcServicer_to_server(servicer, server):
+  rpc_method_handlers = {
+      'add': grpc.unary_unary_rpc_method_handler(
+          servicer.add,
+          request_deserializer=chat__pb2.Value.FromString,
+          response_serializer=chat__pb2.Result.SerializeToString,
+      ),
+      'sub': grpc.unary_unary_rpc_method_handler(
+          servicer.sub,
+          request_deserializer=chat__pb2.Value.FromString,
+          response_serializer=chat__pb2.Result.SerializeToString,
+      ),
+      'mul': grpc.unary_unary_rpc_method_handler(
+          servicer.mul,
+          request_deserializer=chat__pb2.Value.FromString,
+          response_serializer=chat__pb2.Result.SerializeToString,
+      ),
+  }
+  generic_handler = grpc.method_handlers_generic_handler(
+      'chat.Calc', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

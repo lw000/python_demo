@@ -17,11 +17,13 @@ class EchoHandler(asyncore.dispatcher_with_send):
     def handle_read(self):
 #         try:
             data = self.recv(1024).decode()
+            if len(data) == 0:
+                pass
+            
             if data:
                 self.send(data.encode())
 #         except:
 #             print("error.")
-
 
 class EchoServer(asyncore.dispatcher):
 
@@ -36,7 +38,6 @@ class EchoServer(asyncore.dispatcher):
         conn, addr = self.accept()
         print('Incoming connection from %s' % repr(addr))
         self.handler = EchoHandler(conn)
-
 
 class EchoClient(asyncore.dispatcher):
 

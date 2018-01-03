@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='chat.proto',
   package='chat',
   syntax='proto3',
-  serialized_pb=_b('\n\nchat.proto\x12\x04\x63hat\"#\n\x06Person\x12\x0b\n\x03\x61ge\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"&\n\x06\x46\x61mily\x12\x1c\n\x06person\x18\x01 \x03(\x0b\x32\x0c.chat.Person\"A\n\x10msg_chat_request\x12\x10\n\x08\x66rom_uid\x18\x02 \x01(\x05\x12\x0e\n\x06to_uid\x18\x03 \x01(\x05\x12\x0b\n\x03msg\x18\x04 \x01(\t\"?\n\x0emsg_chat_reply\x12\x10\n\x08\x66rom_uid\x18\x01 \x01(\x05\x12\x0e\n\x06to_uid\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x04 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2y\n\x07Greeter\x12:\n\x08SendChat\x12\x16.chat.msg_chat_request\x1a\x14.chat.msg_chat_reply\"\x00\x12\x32\n\x08SayHello\x12\x12.chat.HelloRequest\x1a\x10.chat.HelloReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\nchat.proto\x12\x04\x63hat\"#\n\x06Person\x12\x0b\n\x03\x61ge\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"&\n\x06\x46\x61mily\x12\x1c\n\x06person\x18\x01 \x03(\x0b\x32\x0c.chat.Person\"\x1d\n\x05Value\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\"\x13\n\x06Result\x12\t\n\x01\x63\x18\x01 \x01(\x05\"<\n\x0b\x43hatRequest\x12\x10\n\x08\x66rom_uid\x18\x01 \x01(\x05\x12\x0e\n\x06to_uid\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\t\":\n\tChatReply\x12\x10\n\x08\x66rom_uid\x18\x01 \x01(\x05\x12\x0e\n\x06to_uid\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2o\n\x07Greeter\x12\x30\n\x08SendChat\x12\x11.chat.ChatRequest\x1a\x0f.chat.ChatReply\"\x00\x12\x32\n\x08SayHello\x12\x12.chat.HelloRequest\x1a\x10.chat.HelloReply\"\x00\x32r\n\x04\x43\x61lc\x12\"\n\x03\x61\x64\x64\x12\x0b.chat.Value\x1a\x0c.chat.Result\"\x00\x12\"\n\x03sub\x12\x0b.chat.Value\x1a\x0c.chat.Result\"\x00\x12\"\n\x03mul\x12\x0b.chat.Value\x1a\x0c.chat.Result\"\x00\x62\x06proto3')
 )
 
 
@@ -94,31 +94,24 @@ _FAMILY = _descriptor.Descriptor(
 )
 
 
-_MSG_CHAT_REQUEST = _descriptor.Descriptor(
-  name='msg_chat_request',
-  full_name='chat.msg_chat_request',
+_VALUE = _descriptor.Descriptor(
+  name='Value',
+  full_name='chat.Value',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='from_uid', full_name='chat.msg_chat_request.from_uid', index=0,
+      name='a', full_name='chat.Value.a', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='b', full_name='chat.Value.b', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='to_uid', full_name='chat.msg_chat_request.to_uid', index=1,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='msg', full_name='chat.msg_chat_request.msg', index=2,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
@@ -135,34 +128,65 @@ _MSG_CHAT_REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=97,
-  serialized_end=162,
+  serialized_end=126,
 )
 
 
-_MSG_CHAT_REPLY = _descriptor.Descriptor(
-  name='msg_chat_reply',
-  full_name='chat.msg_chat_reply',
+_RESULT = _descriptor.Descriptor(
+  name='Result',
+  full_name='chat.Result',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='from_uid', full_name='chat.msg_chat_reply.from_uid', index=0,
+      name='c', full_name='chat.Result.c', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=128,
+  serialized_end=147,
+)
+
+
+_CHATREQUEST = _descriptor.Descriptor(
+  name='ChatRequest',
+  full_name='chat.ChatRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='from_uid', full_name='chat.ChatRequest.from_uid', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='to_uid', full_name='chat.msg_chat_reply.to_uid', index=1,
+      name='to_uid', full_name='chat.ChatRequest.to_uid', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='msg', full_name='chat.msg_chat_reply.msg', index=2,
-      number=4, type=9, cpp_type=9, label=1,
+      name='msg', full_name='chat.ChatRequest.msg', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -179,8 +203,53 @@ _MSG_CHAT_REPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=164,
-  serialized_end=227,
+  serialized_start=149,
+  serialized_end=209,
+)
+
+
+_CHATREPLY = _descriptor.Descriptor(
+  name='ChatReply',
+  full_name='chat.ChatReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='from_uid', full_name='chat.ChatReply.from_uid', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='to_uid', full_name='chat.ChatReply.to_uid', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='chat.ChatReply.msg', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=211,
+  serialized_end=269,
 )
 
 
@@ -210,8 +279,8 @@ _HELLOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=229,
-  serialized_end=257,
+  serialized_start=271,
+  serialized_end=299,
 )
 
 
@@ -241,15 +310,17 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=259,
-  serialized_end=288,
+  serialized_start=301,
+  serialized_end=330,
 )
 
 _FAMILY.fields_by_name['person'].message_type = _PERSON
 DESCRIPTOR.message_types_by_name['Person'] = _PERSON
 DESCRIPTOR.message_types_by_name['Family'] = _FAMILY
-DESCRIPTOR.message_types_by_name['msg_chat_request'] = _MSG_CHAT_REQUEST
-DESCRIPTOR.message_types_by_name['msg_chat_reply'] = _MSG_CHAT_REPLY
+DESCRIPTOR.message_types_by_name['Value'] = _VALUE
+DESCRIPTOR.message_types_by_name['Result'] = _RESULT
+DESCRIPTOR.message_types_by_name['ChatRequest'] = _CHATREQUEST
+DESCRIPTOR.message_types_by_name['ChatReply'] = _CHATREPLY
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -268,19 +339,33 @@ Family = _reflection.GeneratedProtocolMessageType('Family', (_message.Message,),
   ))
 _sym_db.RegisterMessage(Family)
 
-msg_chat_request = _reflection.GeneratedProtocolMessageType('msg_chat_request', (_message.Message,), dict(
-  DESCRIPTOR = _MSG_CHAT_REQUEST,
+Value = _reflection.GeneratedProtocolMessageType('Value', (_message.Message,), dict(
+  DESCRIPTOR = _VALUE,
   __module__ = 'chat_pb2'
-  # @@protoc_insertion_point(class_scope:chat.msg_chat_request)
+  # @@protoc_insertion_point(class_scope:chat.Value)
   ))
-_sym_db.RegisterMessage(msg_chat_request)
+_sym_db.RegisterMessage(Value)
 
-msg_chat_reply = _reflection.GeneratedProtocolMessageType('msg_chat_reply', (_message.Message,), dict(
-  DESCRIPTOR = _MSG_CHAT_REPLY,
+Result = _reflection.GeneratedProtocolMessageType('Result', (_message.Message,), dict(
+  DESCRIPTOR = _RESULT,
   __module__ = 'chat_pb2'
-  # @@protoc_insertion_point(class_scope:chat.msg_chat_reply)
+  # @@protoc_insertion_point(class_scope:chat.Result)
   ))
-_sym_db.RegisterMessage(msg_chat_reply)
+_sym_db.RegisterMessage(Result)
+
+ChatRequest = _reflection.GeneratedProtocolMessageType('ChatRequest', (_message.Message,), dict(
+  DESCRIPTOR = _CHATREQUEST,
+  __module__ = 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:chat.ChatRequest)
+  ))
+_sym_db.RegisterMessage(ChatRequest)
+
+ChatReply = _reflection.GeneratedProtocolMessageType('ChatReply', (_message.Message,), dict(
+  DESCRIPTOR = _CHATREPLY,
+  __module__ = 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:chat.ChatReply)
+  ))
+_sym_db.RegisterMessage(ChatReply)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), dict(
   DESCRIPTOR = _HELLOREQUEST,
@@ -304,16 +389,16 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=290,
-  serialized_end=411,
+  serialized_start=332,
+  serialized_end=443,
   methods=[
   _descriptor.MethodDescriptor(
     name='SendChat',
     full_name='chat.Greeter.SendChat',
     index=0,
     containing_service=None,
-    input_type=_MSG_CHAT_REQUEST,
-    output_type=_MSG_CHAT_REPLY,
+    input_type=_CHATREQUEST,
+    output_type=_CHATREPLY,
     options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -329,5 +414,47 @@ _GREETER = _descriptor.ServiceDescriptor(
 _sym_db.RegisterServiceDescriptor(_GREETER)
 
 DESCRIPTOR.services_by_name['Greeter'] = _GREETER
+
+
+_CALC = _descriptor.ServiceDescriptor(
+  name='Calc',
+  full_name='chat.Calc',
+  file=DESCRIPTOR,
+  index=1,
+  options=None,
+  serialized_start=445,
+  serialized_end=559,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='add',
+    full_name='chat.Calc.add',
+    index=0,
+    containing_service=None,
+    input_type=_VALUE,
+    output_type=_RESULT,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='sub',
+    full_name='chat.Calc.sub',
+    index=1,
+    containing_service=None,
+    input_type=_VALUE,
+    output_type=_RESULT,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='mul',
+    full_name='chat.Calc.mul',
+    index=2,
+    containing_service=None,
+    input_type=_VALUE,
+    output_type=_RESULT,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_CALC)
+
+DESCRIPTOR.services_by_name['Calc'] = _CALC
 
 # @@protoc_insertion_point(module_scope)
