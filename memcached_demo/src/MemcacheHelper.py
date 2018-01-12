@@ -35,13 +35,14 @@ class MemcacheHashHelper(object):
     def getHelper(self):
         return self.__memc
     
+
 def client_test():
     memc = MemcacheHelper()
 #     memc = Client(('192.168.204.128', 11211))
     memc.getHelper().set('liwei0', '1111111111111111')
     memc.getHelper().set('counter', 0)
     memc.getHelper().incr('counter', 1)
-    print(memc.get('counter'))
+    print(memc.getHelper().get('counter'))
     memc.getHelper().set_multi({'name': 'liwei', 'age': 7})
     memc.getHelper().set('liwei1', '2222222222222222')
     memc.getHelper().set('liwei2', '3333333333333333')
