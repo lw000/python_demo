@@ -55,13 +55,13 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         host = sys.argv[1]
     else:
-        host = ''
+        host = '127.0.0.1'
 
     # port to use is arg2
     if len(sys.argv) > 2:
         port = int(sys.argv[2])
     else:
-        port = 1234
+        port = 9987
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -69,6 +69,7 @@ if __name__ == '__main__':
     sock.listen(128)
 
     asyncoro.logger.info('server at %s', str(sock.getsockname()))
+    
     server = asyncoro.Coro(server_worker)
     try:
         while True:

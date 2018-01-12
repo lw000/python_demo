@@ -14,7 +14,6 @@ from jsonrpc import JSONRPCResponseManager, dispatcher
 def foobar(**kwargs):
     return kwargs["foo"] + kwargs["bar"]
 
-
 @Request.application
 def application(request):
     # Dispatcher is dictionary {<method_name>: callable}

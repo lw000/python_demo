@@ -6,18 +6,20 @@ Created on 2017年 12月14日
 @author: Administrator
 '''
 import sys
-
+import uuid
+sys.path.append('./')
 sys.path.append('./chat')
-import chat_pb2
+
+from chat_pb2 import Person
 
 class People(object):
     '''
     classdocs
     '''
-    __create_count = 0
+    create_count = 0
     
     def __init__(self, name, v):
-        self.__create_count += 1
+        self.create_count += 1
         self.__name = name
         self.__age = v
 #         print(self)
@@ -50,27 +52,33 @@ class People(object):
         
     @sex.setter
     def sex(self, v):
+        if not isinstance(v, int):
+            raise ValueError('sex must be an integer!')
+        if v < 0 or v > 2:
+            raise ValueError('sex must between 0 ~ 2!')
         self.__sex = v
  
     @classmethod
     def print_count(cls):
-        print('staticmethod print_count', cls.__create_count)
-
-def pb_test():
-    per = chat_pb2.Person()
+        print('staticmethod print_count', cls.create_count)
+        
+    def __str__(self, *args, **kwargs):
+        return 'name:%s,age:%d' % (self.name, self.age)
+if __name__ == '__main__':
+    print(uuid.uuid1())
+    print(uuid.uuid4())
+    
+    per = Person()
     per.name = '1111'
     per.age = 20
     print(per)
     
-if __name__ == '__main__':
-    
-    pb_test()
-    
     p1 = People('liwei', 20)
+    p2 = People('heshanshan', 20)
     print(p1.name)
     print(p1.age)
-    p1.age = 30
-    print(p1.age)
-    p2 = People('liwei', 20)
+    print(p2.name)
+    print(p2.age)
+    
     print(People.print_count())
     

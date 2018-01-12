@@ -9,7 +9,6 @@ import socket
 import time
 import asyncoro
 
-
 def client_worker(conn, coro=None):
     conn = asyncoro.AsyncSocket(conn)
     while True:
@@ -18,20 +17,19 @@ def client_worker(conn, coro=None):
             break
         print(line.decode())
 
-
 if __name__ == '__main__':
     asyncoro.logger.setLevel(asyncoro.Logger.DEBUG)
     # host name or IP address of server is arg1
     if len(sys.argv) > 1:
         host = sys.argv[1]
     else:
-        host = ''
+        host = '127.0.0.1'
 
     # port used by server is arg2
     if len(sys.argv) > 2:
         port = int(sys.argv[2])
     else:
-        port = 1234
+        port = 9987
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((host, port))
@@ -44,6 +42,7 @@ if __name__ == '__main__':
         read_input = input
     else:
         read_input = raw_input("raw_input: ")
+        
     while True:
         try:
             line = read_input().strip()
@@ -53,5 +52,7 @@ if __name__ == '__main__':
                 continue
         except:
             break
+        
         conn.send_msg(line.encode())
+        
     conn.shutdown(socket.SHUT_WR)

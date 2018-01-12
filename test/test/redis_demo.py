@@ -22,7 +22,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(mes
 
 worker_queue = queue.Queue()
 
-
 class RedisHelper(object):
 
     def __init__(self):

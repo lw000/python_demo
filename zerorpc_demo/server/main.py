@@ -7,23 +7,25 @@ import sys
 import getopt
 import zerorpc
 import time
+
+from CommonModuleServer import CommonModuleServer
     
 def client():
     c = zerorpc.Client()
     c.connect('tcp://127.0.0.1:4242')
 
     for _ in range(10):
-        t = time.time()
+        t = time.clock()
         async_result = c.hello('RPC', async=True)
-        print(async_result.get(), '--------->', time.time() - t)
+        print(async_result.get(), '--------->', time.clock() - t)
         
-        t = time.time()
+        t = time.clock()
         async_result = c.add(1, 2)
-        print(async_result, '--------->', time.time() - t)
+        print(async_result, '--------->', time.clock() - t)
         
         t = time.time()
         async_result = c.len('aaaaaaaaaaaaa')
-        print(async_result, '--------->', time.time() - t)
+        print(async_result, '--------->', time.clock() - t)
         
         v = c.streaming_range(10, 100, 10)
         for i in v:
@@ -33,26 +35,9 @@ def client():
 #             c.bad()
 #         except Exception, e:
 #             print('An error occurred: %s' % e)
-       
-class MyRPC(object):
-    def hello(self, name):
-        return 'Hello, %s' % name
     
-    def add(self, a, b):
-        return a+b
-    
-    def len(self, s):
-        return len(s)
-    
-    @zerorpc.stream
-    def streaming_range(self, fr, to, setp):
-        return range(fr, to, setp)
-    
-    def bad(self):
-        raise Exception('pppppppppppppp')
-     
 def server():
-    s = zerorpc.Server(MyRPC())
+    s = zerorpc.Server(CommonModuleServer())
     s.bind('tcp://0.0.0.0:4242')
     s.run()
     

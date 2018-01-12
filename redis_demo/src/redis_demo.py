@@ -17,29 +17,12 @@ import queue
 import logging
 import schedule
 
+from RedisHelper import RedisHelper
+
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s %(filename)s[line:%(lineno)d]',
                     datefmt='%a, %d %b %Y %H:%M:%S')
 
 task_queue = queue.Queue()
-
-
-class RedisHelper(object):
-
-    def __init__(self):
-        self.__pool = redis.ConnectionPool(host='192.168.204.128', port=6379)
-        self.__conn = redis.Redis(connection_pool=self.__pool)
-        self.channel = 'monitor'  # 定义名称
-
-    def publish(self, msg):  # 定义发布方法
-        self.__conn.publish(self.channel, msg)
-        return True
-
-    def subscribe(self):  # 定义订阅方法
-        pub = self.__conn.pubsub()
-        pub.subscribe(self.channel)
-        pub.parse_response()
-        return pub
-
 
 def radis_push_server(name):
     redis = RedisHelper()
@@ -49,7 +32,6 @@ def radis_push_server(name):
         redis.publish(j)  # 发布
 
         time.sleep(1)
-
 
 def redis_recved_data_server(name, q):
     redis = RedisHelper()

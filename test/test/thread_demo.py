@@ -29,7 +29,7 @@ def down_url(url):
     print(filename)
 
 
-def hello():
+def hello(**kwargs):
     print('hello')
 
 
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     try:
 #         _thread.start_new_thread(down_url, ('http://www.futurecrew.com/skaven/song_files/mp3/razorback.mp3',))
 
-        timer = threading.Timer(3, hello)
+        timer = threading.Timer(3, hello, kwargs={'name':'111111','age':'111111'})
         timer.start()
         
 #         t1 = threading.Thread(target=put_task,

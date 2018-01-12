@@ -53,7 +53,11 @@ def list_test():
     print(xx)
 
 
-def dict_test():
+def dict_test(**kwargs):
+    
+    for k in kwargs:
+        print(k, kwargs[k])
+        
     dic = {"name": "liwei", "age": 7}
     print(dic["name"])
     print(dic.get("age"))
@@ -86,7 +90,16 @@ def test_read():
     return 1, 2, 3
 
 
-def set_test():
+def set_test(*args, **kwargs):
+    
+    for k in kwargs:
+        print(k, kwargs[k])
+    print(kwargs)
+    
+    for s in args:
+        print('args:', s)
+    print(args)
+    
     ssss = set([])
 
     for i in range(10):
@@ -95,13 +108,11 @@ def set_test():
         ssss.add(i)
     print("ssss: ", ssss)
 
-
 def createGenerator():
     v = range(10)
     for i in v:
         yield i * i
 
-    
 def main():
     atexit.register(exit_fun, a1="111", a2="222")
         
@@ -125,9 +136,10 @@ def main():
 #     profile.run("test_write()")
 #     profile.run("test_read()")
 
-    dict_test()
+    dict_test(name='liwei', age=20, sex=1, addr='shenzhenshi')
+    
     list_test()
-    set_test()
+    set_test(1,2,3,4,5,6,name='liwei', age=20, sex=1, addr='shenzhenshi')
     test_write()
     vvv = test_read()
     print('vvv: ', vvv)
@@ -164,7 +176,18 @@ def main():
     print("c: ", c, c['f'])
 
 
+    with open('./text.txt','w+') as f:
+        for i in range(100):
+            f.write('1111111111111111111111111')
+        
+    with open('./cfg.cfg', mode='r') as f:
+        lines = f.readlines()
+        for line in lines:
+            print(line)
+        
 if __name__ == "__main__":
+    print(__name__)
+    
 #     f = open('cfg.cfg', 'r')
 #     cfg = Config(f)
 #     for m in cfg.messages:
@@ -173,4 +196,15 @@ if __name__ == "__main__":
 #         
 #     f.close()
     
-    main()
+    
+    d = {}
+    for i in range(10):
+        if d.get(i) == None:
+            d[i] = list([])
+        for j in range(10):
+            d[i].append('111111111111')
+    
+    for k, v in d.items():
+        print(k, v)
+
+#     main()
